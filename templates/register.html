@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Calibri, Helvetica, sans-serif;
+            background-color: #f1f1f1;
+        }
+
+        .container {
+            padding: 50px;
+            background-color: #E67451;
+        }
+
+        input[type=text], input[type=password], textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            background-color: #f1f1f1;
+            outline: none;
+        }
+
+        div {
+            padding: 10px 0;
+        }
+
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        form {
+            border: 3px solid #f1f1f1;
+        }
+
+
+        .registerbtn {
+            background-color: #B6B6B4;
+            color: black;
+            font: 20px bold;
+            padding: 16px 20px;
+            margin: 5px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+<form action="register" method="post">
+    {% csrf_token %}
+    <div class="container">
+        <center><h1> User Registeration </h1></center>
+        <hr>
+
+        <label><b> First Name </b> </label>
+        <input type="text" name="first_name" placeholder="e.g. MANISH" size="15" required/>
+
+        <label><b> Last Name </b></label>
+        <input type="text" name="last_name" placeholder="e.g. SHARMA" size="15" required/>
+
+        <div>
+            <label><b> Username </b></label>
+            <input type="text" name="username" placeholder="e.g. imkevin12" size="10" required>
+        </div>
+
+        <div>
+            <label><b> Course </b></label>
+            <select>
+                <option name="course" value="Course">Select</option>
+                <option name="course" value="BCA">BCA</option>
+                <option name="course" value="BBA">BBA</option>
+                <option name="course" value="B.Tech">B.Tech</option>
+                <option name="course" value="MBA">MBA</option>
+                <option name="course" value="MCA">MCA</option>
+                <option name="course" value="M.Tech">M.Tech</option>
+            </select>
+        </div>
+        <br>
+
+        <div>
+            <label><b> Gender </b></label><br>
+            <input type="radio" value="Male" name="gender" checked> Male
+            <input type="radio" value="Female" name="gender"> Female
+            <input type="radio" value="Other" name="gender"> Other
+        </div>
+        <br>
+
+        <div>
+            <label><b> Contact Number </b></label>
+            <input type="text" name="contact_no" placeholder="+91-0123456789" size="2" required>
+        </div>
+
+        <div>
+            <label><b> Address </b></label>
+            <textarea cols="80" rows="5" name="address" placeholder="Please enter your address" value="address"
+                      required></textarea>
+        </div>
+
+        <div>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="e.g. example@imkevin.com" name="email" required>
+        </div>
+
+        <div>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password1" required>
+        </div>
+
+        <div>
+            <label for="psw-repeat"><b>Re-type Password</b></label>
+            <input type="password" placeholder="Retype Password" name="password2" required>
+        </div>
+
+
+        <div>
+            <input type="checkbox" name="tnc" required>
+            <label> I agree to <b><u>Terms of Service</u></b> and <b><u>Privacy Policy</u></b></label>
+
+        </div>
+        <br>
+
+        <div>
+            <button type="submit" class="registerbtn"><b> Register </b></button>
+        </div>
+
+</form>
+
+<div>
+    {% for message in messages %}
+    <h3> {{message}} </h3>
+    {% endfor %}
+</div>
+
+</body>
+</html>

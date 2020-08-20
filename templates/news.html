@@ -1,0 +1,466 @@
+{% load static %}                   <!-- To load static files -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>News</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="KEVIN.in TRAVELLO">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/news.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/news_responsive.css' %}">
+</head>
+
+<body>
+<div class="super_container">
+	
+	<!-- Header -->
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
+							<div class="logo"><a href="/">KEVIN.in TRAVELLO</a></div>
+							<nav class="main_nav">
+								<ul class="d-flex flex-row align-items-start justify-content-start">
+									<li><a href="/"> Home </a></li>
+                                    <li><a href="about"> About us </a></li>
+                                    <li><a href="services"> Services </a></li>
+                                    <li class="active"><a href="news"> News </a></li>
+                                    <li><a href="contact"> Contact </a></li>
+                                    <li></li>
+                                    <li></li>
+
+                                    {% if user.is_authenticated %}
+                                    <button style="background-color:white; border-radius: 12px; border: 2px solid black; color: green; padding: 1px 50px; text-align: center; font-size: 15px;" disabled><b>💚&nbsp;&nbsp;{{user.username}} </b></button>
+                                    <button style="background-color:white; border-radius: 12px; border: 2px solid black; padding: 1px 5px; text-align: center; font-size: 15px;"> <a style=" color: black;" href="accounts/logout"><b>💔&nbsp;&nbsp;Logout </b></a></button>
+
+                                    {% else %}
+                                    <button style="background-color:white; border-radius: 12px; border: 2px solid black; color: black;  padding: 1px 50px; text-align: center; font-size: 15px;"><a style=" color: black;" href="accounts/register"><b> 💗&nbsp;&nbsp;Register </b></a></button>
+                                    <button style="background-color:white; border-radius: 12px; border: 2px solid black; color: black;  padding: 1px 18px; text-align: center; font-size: 15px;"><a style=" color: black;" href="accounts/login"><b> 💙&nbsp;&nbsp;Login </b></a></button>
+                                    {% endif %}
+								</ul>
+							</nav>
+
+                            <!-- Hamburger -->
+							<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header_social d-flex flex-row align-items-center justify-content-start">
+			<ul class="d-flex flex-row align-items-start justify-content-start">
+				<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+			</ul>
+		</div>
+	</header>
+
+	<!-- Menu -->
+	<div class="menu">
+		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
+			<div class="menu_logo"><a href="/">KEVIN.in TRAVELLO</a></div>
+			<div class="menu_close_container ml-auto">
+				<div class="menu_close">
+                    <div></div>
+                    <div></div>
+                </div>
+			</div>
+		</div>
+		<div class="menu_content">
+			<ul>
+				<li><a href="/"> Home </a></li>
+                <li><a href="about"> About us </a></li>
+                <li><a href="services"> Services </a></li>
+                <li class="active"><a href="news"> News </a></li>
+                <li><a href="contact"> Contact </a></li>
+			</ul>
+		</div>
+		<div class="menu_social">
+			<div class="menu_phone ml-auto">Call us: +91 8562868641</div>
+			<ul class="d-flex flex-row align-items-start justify-content-start">
+				<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- Home -->
+	<div class="home">
+		<div class="background_image" style="background-image:url({% static 'images/news_img.jpg' %})"></div>
+	</div>
+
+	<!-- Search -->
+	<div class="home_search">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_search_container">
+						<div class="home_search_title">Search for your trip</div>
+						<div class="home_search_content">
+							<form action="#" class="home_search_form" id="home_search_form">
+								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+									<input type="text" class="search_input search_input_1" placeholder="City" required="required">
+									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">
+									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">
+									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">
+									<button class="home_search_button">search</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- News -->
+	<div class="news">
+		<div class="container">
+			<div class="row">
+
+				<!-- News Container -->
+				<div class="col-lg-8">
+					<div class="news_container">
+						
+						<!-- News Post -->
+						<div class="news_post">
+							<div class="news_post_image"><img src="{% static 'images/news_n1.jpg' %}" alt=""></div>
+							<div class="news_post_content">
+								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+									<div>04</div>
+									<div>september</div>
+								</div>
+								<div class="news_post_title"><a href="#">National Parks & Wildlife Sanctuaries of Rajasthan</a></div>
+								<div class="news_post_category">
+									<ul>
+										<li><a href="#">lifestyle & travel</a></li>
+									</ul>
+								</div>
+								<div class="news_post_text">
+									<p>Rajasthan, spreading across the area of 3,42,000 sq km across the north-west zone, brings the ultimate wilderness across its distinct reserves and sanctuaries. Every year around thousands of nature lover oomph for this amazing landscape that was once being ruled by the royal Rajputanas. Observing Rajasthan wildlife is actually encountering number of mammals and birds living in sovereignty at various sanctuaries and reserves.</p>
+									<p>The largest state in India in terms of area, Rajasthan has basically tremendous richness in wilderness. If we talk about the sand dunes or deserted land, the regions are simply limitless but on the other way, it is the same land that also boasts rich semi-evergreen forests and that simply brings the perfect home for variant animal species.</p>
+								</div>
+								<div class="news_post_link"><a href="#">Read More</a></div>
+							</div>
+						</div>
+
+						<!-- News Post -->
+						<div class="news_post">
+							<div class="news_post_image"><img src="{% static 'images/news_n2.jpg' %}" alt=""></div>
+							<div class="news_post_content">
+								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+									<div>12</div>
+									<div>october</div>
+								</div>
+								<div class="news_post_title"><a href="#">Heritage Tourism of Rajasthan</a></div>
+								<div class="news_post_category">
+									<ul>
+										<li><a href="#">lifestyle & travel</a></li>
+									</ul>
+								</div>
+								<div class="news_post_text">
+									<p>Rajasthan - the land of Rajas - is a sparkling diamond in India's crown. Bestowed with some of the finest specimens of palaces, forts and museum, Rajasthan truly captures the essence of India and reflects the ritzy and swanky lifestyle of its people. Every corner of the state is decorated with distinctly unique architecture; each tells a unique story of chivalry, victory or rout. And to know more about these tales and fables, tourists from every corner of the world throngs to Rajasthan for their luxury heritage tour.</p>
+									<p>There are hardly places in the world that could match with the astonishing architectural heritages of Rajasthan. Over the years, Rajasthan has witnessed the rule of multiple kingdoms. The soil of this state is the first-hand witness of bloodbaths; riots of laughter; pride, and traditions since the time immemorial. And to express their every emotion, the upper echelons of the society built magnificent palaces and forts. The result is that state is awash with priceless treasures. In addition, stunning art, murals and signature paintings developed and nurtured in palaces and forts of Rajasthan also reflects the exquisite taste of maharajas. Such strong are the heritages of Rajasthan that even after their so many years of formation, the marvelous charm is still retained, and a good number of them are converted into hotels, while others still serve as the principal residence of the erstwhile royal family. Some of these are even counted amongst the world's largest private residences.</p>
+								</div>
+								<div class="news_post_link"><a href="#">Read More</a></div>
+							</div>
+						</div>
+
+						<!-- News Post -->
+						<div class="news_post">
+							<div class="news_post_image"><img src="{% static 'images/news_n3.jpg' %}" alt=""></div>
+							<div class="news_post_content">
+								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+									<div>06</div>
+									<div>november</div>
+								</div>
+								<div class="news_post_title"><a href="#">Pilgrimage Tourism of Rajasthan</a></div>
+								<div class="news_post_category">
+									<ul>
+										<li><a href="#">lifestyle & travel</a></li>
+									</ul>
+								</div>
+								<div class="news_post_text">
+									<p>If there is any state where the rich cultures and traditions of India are still intact than it has to Rajasthan. While walking on the streets of Rajasthan, one can touch, taste, and experience the local culture and come across certain ancient religious practices that were familiar only to our ancestors. With a calendar full of celebrations and something unique happening every day, one can easily to get to know that people of Rajasthan are very serious when it comes to following religious practices.</p>
+									<p>The major chunk of tourists visits Rajasthan not only to get acquaintance with its iconic heritages and marvelous masterpieces but also to quench their spiritual thirst and pray with heart and soul. Be it mosque or temple; Rajasthan is bestowed with shrines of multiple religion that evokes a pure feeling of dignity and communal harmony. At the top it, most of the shrines was created by ruling monarchs, which makes them an exemplary of high artistic beauty. Even today, the beauty of the shrines are evident even after facing so many calamities, disasters, and wars. Visiting Rajasthan for a pilgrimage holiday reminds one of time that have remain visually unchanged over centuries.</p>
+								</div>
+								<div class="news_post_link"><a href="#">Read More</a></div>
+							</div>
+						</div>
+
+						<!-- News Post -->
+						<div class="news_post">
+							<div class="news_post_image"><img src="{% static 'images/news_n4.jpg' %}" alt=""></div>
+							<div class="news_post_content">
+								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+									<div>14</div>
+									<div>december</div>
+								</div>
+								<div class="news_post_title"><a href="#">Adventure in Rajasthan</a></div>
+								<div class="news_post_category">
+									<ul>
+										<li><a href="#">lifestyle & travel</a></li>
+									</ul>
+								</div>
+								<div class="news_post_text">
+									<p>If ever given an option of relaxing on the Thar desert, going vintage, doing some dune bashing, enjoying laid back camel ride or rising in the sky for the aerial sightseeing of heritage city zip lining, paragliding, and hot-air ballooning, then what would one do? Well, if asked this question from an adventurer than they include all these any much more in their itinerary. And Rajasthan is the place where they would make their way too. All the adventure activities practiced in Rajasthan promises to change one's perception about this scintillating land of forts and marvelous royal structures.</p>
+									<p>When it comes to the adventure holiday in Rajasthan, one just can't let go the number of options that can be experienced here. To feel the thrills and chills, paragliding over Jodhpur and Jaisalmer can prove to be completely out of the blue. Feeling of butterflies in the stomach when taking a flight atop some grand forts is simply hard to define in some limited words. There is something about the Rajasthan's beautiful landscapes, and palaces dotted on them; they create a royal aura, and if seen from high above the fray, their beauty doubles up and would rekindle the tourists love for air travel. And that's the kind of worthwhile experience that Hot Air Ballooning offers the visitors. When it comes to hot air ballooning ride in Rajasthan, one should make their way to Jaipur or Pushkar.</p>
+								</div>
+								<div class="news_post_link"><a href="#">Read More</a></div>
+							</div>
+						</div>
+
+						<!-- News Post -->
+						<div class="news_post">
+							<div class="news_post_image"><img src="{% static 'images/news_n5.jpg' %}" alt=""></div>
+							<div class="news_post_content">
+								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+									<div>2</div>
+									<div>january</div>
+								</div>
+								<div class="news_post_title"><a href="#">Lakes in Rajasthan</a></div>
+								<div class="news_post_category">
+									<ul>
+										<li><a href="#">lifestyle & travel</a></li>
+									</ul>
+								</div>
+								<div class="news_post_text">
+									<p>Undoubtedly, it's the forts and palaces of Rajasthan that attracts the major number of tourists as they reflect the rich heritage and past coupled with the influence of modern lifestyle. But along with these elaborate heritage architectures, lakes also attracts some tourists attention. Such beautiful are the lakes that even Udaipur, a famous destination in Rajasthan, is called 'City of Lakes' and 'Venice of the East.' The country’s largest salt lake - Sambhar Salt Lake is situated in the located quite close to Jaipur, the capital city of Rajasthan. Also, these lakes of Rajasthan mark many mythological events too. Legends has it that the Pushkar Lake of Rajasthan appeared when Brahma dropped a lotus flower. The place is also famous for world's few Brahma temples. Bundi, Udaipur, Pushkar, and Ajmer are some of the famous places of Rajasthan where lakes still dominate the landscape. Even the ruling kings have a played a crucial role in the development of Rajasthan's lake network.</p>
+								</div>
+								<div class="news_post_link"><a href="#">Read More</a></div>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Pagination -->
+					<div class="pagination">
+						<ul class="d-flex flex-row align-items-start justify-content-start">
+							<li class="active"><a href="#">1&nbsp;&nbsp;</a></li>
+							<li><a href="#"> Next 2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- News Sidebar -->
+				<div class="col-lg-4">
+					<div class="news_sidebar">
+
+						<!-- Categories -->
+						<div class="categories">
+							<div class="sidebar_title">Categories</div>
+							<div class="sidebar_list">
+								<ul>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">WILDLIFE<span class="ml-auto">(34)</span></div></a></li>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">HERITAGE<span class="ml-auto">(242)</span></div></a></li>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">PILGRIMAGE<span class="ml-auto">(184)</span></div></a></li>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">ADVENTURE<span class="ml-auto">(122)</span></div></a></li>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">LAKES<span class="ml-auto">(42)</span></div></a></li>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">FAIRS & FESTIVALS<span class="ml-auto">(66)</span></div></a></li>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">CUISINE<span class="ml-auto">(354)</span></div></a></li>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">SHOPPING<span class="ml-auto">(322)</span></div></a></li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Latest News -->
+						<div class="latest">
+							<div class="sidebar_title">Latest News</div>
+							<div class="latest_container">
+								
+								<!-- News Post -->
+								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
+									<div class="latest_post_image"><img src="{% static 'images/camel_festival.jpg' %}" alt=""></div>
+									<div class="latest_post_content">
+										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
+											<div class="latest_post_day">08</div>
+											<div class="latest_post_month">january</div>
+										</div>
+										<div class="latest_post_title"><a href="#">Camel Festival 2020 </a></div>
+										<div class="latest_post_text">
+											<p>Art & Cultural Festival</p>
+										</div>
+									</div>
+								</div>
+
+								<!-- News Post -->
+								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
+									<div class="latest_post_image"><img src="{% static 'images/dussehra_mela.jpg' %}" alt=""></div>
+									<div class="latest_post_content">
+										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
+											<div class="latest_post_day">19</div>
+											<div class="latest_post_month">october</div>
+										</div>
+										<div class="latest_post_title"><a href="#">Dussehra Mela 2020</a></div>
+										<div class="latest_post_text">
+											<p>Dussehra Festival</p>
+										</div>
+									</div>
+								</div>
+
+								<!-- News Post -->
+								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
+									<div class="latest_post_image"><img src="{% static 'images/jaipur_literature_festival.jpg' %}" alt=""></div>
+									<div class="latest_post_content">
+										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
+											<div class="latest_post_day">23</div>
+											<div class="latest_post_month">january</div>
+										</div>
+										<div class="latest_post_title"><a href="#">Jaipur Literature Festival 2020</a></div>
+										<div class="latest_post_text"><p>Literature Festival</p></div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="travello">
+							<div class="background_image" style="background-image:url({% static 'images/travello.jpg' %})"></div>
+							<div class="travello_content">
+								<div class="travello_content_inner">
+									<div></div>
+									<div></div>
+								</div>
+							</div>
+							<div class="travello_container">
+								<a href="#">
+									<div class="d-flex flex-column align-items-center justify-content-end">
+										<span class="travello_title">Get a 30% Discount</span>
+										<span class="travello_subtitle">Plan Your Vacations with KEVIN.in TRAVELLO</span>
+									</div>
+								</a>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="background_image" style="background-image:url({% static 'images/footer_1.jpg' %}" ></div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="newsletter">
+                        <div class="newsletter_title_container text-center">
+                            <div class="newsletter_title">Subscribe to our newsletter to get the latest trends & news
+                            </div>
+                            <div class="newsletter_subtitle">Join us NOW!</div>
+                        </div>
+                        <div class="newsletter_form_container">
+                            <form action="#"
+                                  class="newsletter_form d-flex flex-md-row flex-column align-items-start justify-content-between"
+                                  id="newsletter_form">
+                                <div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
+                                    <div><input type="text" class="newsletter_input newsletter_input_name"
+                                                id="newsletter_input_name" placeholder="Name" required="required">
+                                        <div class="input_border"></div>
+                                    </div>
+                                    <div><input type="email" class="newsletter_input newsletter_input_email"
+                                                id="newsletter_input_email" placeholder="Your e-mail"
+                                                required="required">
+                                        <div class="input_border"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button class="newsletter_button">subscribe</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer_contact_row">
+                <div class="col-xl-10 offset-xl-1">
+                    <div class="row">
+
+                        <!-- Footer Contact Item -->
+                        <div class="col-xl-4 footer_contact_col">
+                            <div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+                                <div class="footer_contact_icon"><img src="{% static 'images/sign.svg' %}" alt=""></div>
+                                <div class="footer_contact_title">give us a call</div>
+                                <div class="footer_contact_list">
+                                    <ul>
+                                        <li>Office Landline: 0151-2215424</li>
+                                        <li>Mobile: +918562868641</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Contact Item -->
+                        <div class="col-xl-4 footer_contact_col">
+                            <div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+                                <div class="footer_contact_icon"><img src="{% static 'images/trekking.svg' %}" alt="">
+                                </div>
+                                <div class="footer_contact_title">come & drop by</div>
+                                <div class="footer_contact_list">
+                                    <ul style="max-width:190px">
+                                        <li>412A Street, Bikaner, Rajasthan, India</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Contact Item -->
+                        <div class="col-xl-4 footer_contact_col">
+                            <div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+                                <div class="footer_contact_icon"><img src="{% static 'images/around.svg' %}" alt="">
+                                </div>
+                                <div class="footer_contact_title">send us a message</div>
+                                <div class="footer_contact_list">
+                                    <ul>
+                                        <li>manish12.mca@gmail.com</li>
+                                        <li>Office@imkevin12.com</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col text-center">
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+            All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
+                href="{% static 'https://imkevin.com' %}" target="_blank">Kevin</a>
+        </div>
+    </footer>
+
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="js/news.js"></script>
+</body>
+</html>
